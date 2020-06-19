@@ -1,0 +1,34 @@
+{
+  "name": "setup-testspace",
+  "version": "1.0.0",
+  "description": "A GitHub Action to install and configure the Testspace client used for publishing test content",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint index.js",
+    "package": "ncc build index.js -o dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/testspace-com/setup-testspace.git"
+  },
+  "keywords": [
+    "Actions",
+    "JavaScript",
+    "Testspace"
+  ],
+  "author": "S2 Technologies, Inc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/testspace-com/setup-testspace/issues"
+  },
+  "homepage": "https://github.com/testspace-com/setup-testspace#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/tool-cache": "^1.5.5"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.22.3",
+    "eslint": "^7.2.0"
+  }
+}

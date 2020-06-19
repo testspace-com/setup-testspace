@@ -1,0 +1,16 @@
+name: 'setup-testspace'
+description: 'Action to install and configuration the Testspace client'
+author: 'S2 Technologies, Inc.'
+inputs:
+  subdomain:  
+    description: 'Testspace subdomain'
+    required: true
+  token:
+    description: 'Testspace access token (required for private repos only)'
+    required: false
+branding:
+  color: green
+  icon: terminal
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
