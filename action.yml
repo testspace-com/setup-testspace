@@ -1,9 +1,9 @@
 name: 'setup-testspace'
-description: 'Action to install and configuration the Testspace client'
+description: 'Action to install and configure the Testspace client'
 author: 'S2 Technologies, Inc.'
 inputs:
-  subdomain:  
-    description: 'Testspace subdomain'
+  domain:  
+    description: 'Testspace organizational name'
     required: true
   token:
     description: 'Testspace access token (required for private repos only)'

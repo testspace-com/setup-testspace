@@ -5,13 +5,11 @@ const execSync = require('child_process').execSync;
 
 async function run() {
 
-    try {       
-        var domain;
-        var subdomain = core.getInput('subdomain');
-        if (subdomain.includes('.')) {
-            domain = subdomain;
-        } else {
-            domain = subdomain+'.testspace.com';
+    try {
+          
+        var domain = core.getInput('domain');
+        if (!domain.includes('.')) {
+            domain = domain+'.testspace.com';
         }
 
         var token = core.getInput('token');

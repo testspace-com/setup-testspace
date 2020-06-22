@@ -10,14 +10,14 @@ Setting up the Testspace client:
 ```yaml
 uses: testspace-com/setup-testspace@v1
 with:
-  subdomain: newco
+  domain: newco
   token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
 ```
 
 ## Input
-The Testspace client actions requires a `subdomain` and optionally a token for pushing content.
+The Testspace client action requires a `domain` and optionally a token for pushing content.
 
-* [Testspace subdomain](https://help.testspace.com/docs/dashboard/admin-signup) is the *organizational* named used when signing up for an account.
+* [Testspace domain](https://help.testspace.com/docs/dashboard/admin-signup) is the **organizational** name (*subdomain*) used when creating the account along with *.testspace.com*. The *.testspace.com* string is optional. 
 * [Testspace token](https://help.testspace.com/docs/dashboard/admin-user#account) is required when using a `private` repo. 
 
 ## Example
@@ -32,13 +32,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: testspacehq/setup-testspace@v1
+      - uses: testspace-com/setup-testspace@v1
         with:
-          subdomain: samples
+          domain: newco
       - name: Push test results
         run: testspace results.xml
         if: always()
 ```
+
+For more information on pushing Test content refer to the help [Overview on publishing](help.testspace.com/docs/publish/getting-started-overview). 
 
 ## Contributing 
 Contributions are encouraged following the [Contribution Guide](CONTRIBUTING.md).
