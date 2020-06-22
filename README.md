@@ -36,7 +36,8 @@ jobs:
         with:
           domain: newco
       - name: Push test results
-        run: testspace results.xml
+        run: |
+          testspace results.xml
         if: always()
 ```
 
