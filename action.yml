@@ -3,7 +3,7 @@ description: 'Action to install and configure the Testspace client'
 author: 'S2 Technologies, Inc.'
 inputs:
   domain:  
-    description: 'Testspace organizational name'
+    description: 'Testspace domain name'
     required: true
   token:
     description: 'Testspace access token (required for private repos only)'
