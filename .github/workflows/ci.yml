@@ -1,0 +1,25 @@
+name: Testspace Action
+on: [push, pull_request]
+
+jobs:
+  units:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run lint
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v2
+        with: 
+          fetch-depth: 50
+      - name: Testspace client install & config
+        uses: ./
+        with:
+          domain: "s2"
+      - name: Testspace push test content
+        run: testspace [${{ matrix.os}}]./testcontent/*.xml
