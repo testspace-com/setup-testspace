@@ -41,7 +41,7 @@ jobs:
         if: always()
 ```
 
-For more information on pushing Test content refer to the help [Overview on publishing](help.testspace.com/docs/publish/getting-started-overview). 
+For more information on pushing Test content refer to the help [Overview on publishing](http://help.testspace.com/docs/publish/getting-started-overview). 
 
 ## Contributing 
 Contributions are encouraged following the [Contribution Guide](CONTRIBUTING.md).
