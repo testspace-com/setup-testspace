@@ -1,5 +1,5 @@
 
-![Testspace Action](https://github.com/testspacehq/setup-testspace/workflows/Testspace%20Action/badge.svg)
+![Testspace Action](https://github.com/testspace-com/setup-testspace/workflows/Testspace%20Action/badge.svg)
 
 # Testspace client Setup JavaScript Action
 A GitHub Action used to install and configure the Testspace client used for publishing test content to [Testspace.com](https://testspace.com). 
