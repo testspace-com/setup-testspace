@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 50
       - uses: testspace-com/setup-testspace@v1
         with:
           domain: newco
