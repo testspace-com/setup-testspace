@@ -10,7 +10,7 @@ Setting up the Testspace client:
 ```yaml
 uses: testspace-com/setup-testspace@v1
 with:
-  domain: newco
+  domain: ${{ github.repository_owner }}  # Testspace subdomain defaults to GitHub org
   token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
 ```
 
@@ -36,14 +36,14 @@ jobs:
           fetch-depth: 50
       - uses: testspace-com/setup-testspace@v1
         with:
-          domain: newco
+          domain: ${{github.repository_owner}}
       - name: Push test results
         run: |
           testspace results.xml
         if: always()
 ```
 
-For more information on pushing Test content refer to the help [Overview on publishing](http://help.testspace.com/docs/publish/getting-started-overview). 
+For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/docs/publish/overview). 
 
 ## Contributing 
 Contributions are encouraged following the [Contribution Guide](CONTRIBUTING.md).

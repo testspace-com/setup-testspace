@@ -20,6 +20,6 @@ jobs:
       - name: Testspace client install & config
         uses: ./
         with:
-          domain: "s2"
+          domain: ${{ github.repository_owner }}
       - name: Testspace push test content
         run: testspace [${{ matrix.os}}]./testcontent/*.xml
