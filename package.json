@@ -1,6 +1,6 @@
 {
   "name": "setup-testspace",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A GitHub Action to install and configure the Testspace client used for publishing test content",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/testspace-com/setup-testspace#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@actions/tool-cache": "^1.5.5"
   },
   "devDependencies": {
