@@ -1,6 +1,6 @@
 {
   "name": "setup-testspace",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A GitHub Action to install and configure the Testspace client used for publishing test content",
   "main": "index.js",
   "scripts": {
