@@ -12,5 +12,39 @@ branding:
   color: green
   icon: terminal
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: 'composite'
+  steps: 
+    - run: |
+        if [ `uname -m` != 'x86_64' ]; then echo 'Error: Not supported platform.' && exit 1; fi
+        case `uname -s` in
+          Linux)
+            folder=$HOME/bin
+            mkdir -p $folder
+            curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $folder
+            ;;
+          Darwin)
+            folder=$HOME/bin
+            mkdir -p $folder
+            curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-darwin.tgz | tar -zxvf- -C $folder
+            ;;
+          *) # Windows
+            folder=$LOCALAPPDATA\Programs\testspace
+            mkdir -p "$folder"
+            curl -OsSL https://testspace-client.s3.amazonaws.com/testspace-windows.zip
+            unzip -q -o testspace-windows.zip -d "$folder"
+            rm testspace-windows.zip
+            ;;
+        esac
+        echo "$folder" >> $GITHUB_PATH
+      shell: bash
+    - run: |
+        testspace --version
+        domain=${{ inputs.domain }}
+        if [ "${domain%%.*}" == "$domain" ]; then domain="${domain}.testspace.com"; fi
+        token=${{ inputs.token }}
+        if [ "$token" ]; then
+          echo "::add-mask::${{ inputs.token }}"
+          if [ "${token%%:*}" == "$token" ]; then token="${token}:"; fi
+        fi
+        testspace config url "${token}@${domain}"
+      shell: bash
