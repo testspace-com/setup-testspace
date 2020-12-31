@@ -8,7 +8,7 @@ A GitHub Action used to install and configure the Testspace client used for publ
 Setting up the Testspace client:
 
 ```yaml
-uses: testspace-com/setup-testspace@v1
+uses: testspace-com/setup-testspace@v2
 with:
   domain: ${{ github.repository_owner }}  # Testspace subdomain defaults to GitHub org
   token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
@@ -24,24 +24,44 @@ The Testspace client action requires a `domain` and optionally a token for pushi
 The following hello world type of example:
 
 ```
-name: hello
+name: CI
 on:
   push:
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 50
-      - uses: testspace-com/setup-testspace@v1
+      - uses: testspace-com/setup-testspace@v2
         with:
           domain: ${{github.repository_owner}}
-      - name: Push test results
+      - name: Publish Results to Testspace
         run: |
           testspace results.xml
         if: always()
 ```
+
+When using a **Matrix** it is recommended to use a `folder` to store the results specific to each matric entry.
+
+```
+name: CI
+on:
+  push:
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      ..
+      - name: Publish Results to Testspace
+        run: |
+          testspace [ ${{ matrix.os }} ]results.xml   
+```
+
 
 For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/docs/publish/overview). 
 
