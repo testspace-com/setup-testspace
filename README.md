@@ -2,7 +2,7 @@
 ![Testspace Action](https://github.com/testspace-com/setup-testspace/workflows/Testspace%20Action/badge.svg)
 
 # Testspace client Setup JavaScript Action
-A GitHub Action used to install and configure the Testspace client used for publishing test content to [Testspace.com](https://testspace.com). 
+A GitHub Action is used to install and configure the Testspace client used for publishing test content to [Testspace.com](https://testspace.com). 
 
 ## Usage
 Setting up the Testspace client:
@@ -12,6 +12,12 @@ uses: testspace-com/setup-testspace@v2
 with:
   domain: ${{ github.repository_owner }}  # Testspace subdomain defaults to GitHub org
   token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
+```
+
+Once the client is setup for a job [results](https://help.testspace.com/docs/publish/push-data-results#file-content) can be published to the Testspace server:
+
+```
+$ testspace results.xml
 ```
 
 ## Input
