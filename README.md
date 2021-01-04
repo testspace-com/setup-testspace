@@ -1,8 +1,8 @@
 
 ![Testspace Action](https://github.com/testspace-com/setup-testspace/workflows/Testspace%20Action/badge.svg)
 
-# Testspace client Setup JavaScript Action
-A GitHub Action used to install and configure the Testspace client used for publishing test content to [Testspace.com](https://testspace.com). 
+# Testspace client Setup Action
+A GitHub Action is used to install and configure the Testspace client used for publishing test results and reports to [Testspace.com](https://github.com/marketplace/testspace-com). 
 
 ## Usage
 Setting up the Testspace client:
@@ -14,21 +14,27 @@ with:
   token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
 ```
 
-## Input
-The Testspace client action requires a `domain` and optionally a token for pushing content.
-
-* [Testspace domain](https://help.testspace.com/docs/dashboard/admin-signup) is the **organizational** name (*subdomain*) used when creating the account along with *.testspace.com*. The *.testspace.com* string is optional. 
-* [Testspace token](https://help.testspace.com/docs/dashboard/admin-user#account) is required when using a `private` repo. 
-
-## Example
-The following hello world type of example:
+Once the client is setup for a job [test results](https://help.testspace.com/docs/publish/push-data-results#file-content) can be published to the Testspace server:
 
 ```
-name: hello
+$ testspace results.xml
+```
+
+## Input
+The Testspace client action requires a `domain` and optionally a token for publishing test results.
+
+* [Testspace domain](https://help.testspace.com/docs/dashboard/admin-signup) is the **organizational** name (*subdomain*) used when creating the account along with *.testspace.com*. The *.testspace.com* string is optional. 
+* [Testspace access token](https://help.testspace.com/docs/dashboard/admin-user#account) is required when using a `private` repo. 
+
+## Examples
+A few usage examples:
+
+```
+name: CI
 on:
   push:
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -37,10 +43,35 @@ jobs:
       - uses: testspace-com/setup-testspace@v1
         with:
           domain: ${{github.repository_owner}}
-      - name: Push test results
+      - name: Publish Results to Testspace
         run: |
           testspace results.xml
         if: always()
+```
+
+When using a **Matrix** it is recommended to use a `folder` to store the test results specific to each matric entry.
+
+```
+name: CI
+on:
+  push:
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      ..
+      - name: Publish Results to Testspace
+        run: |
+          testspace [ ${{ matrix.os }} ]results.xml   
+```
+
+When using the [source directory](https://help.testspace.com/docs/publish/push-data-results#source) to organize your test results in corresponding `folders`.
+
+```
+$ testspace results.xml{path/to/test-source}
 ```
 
 For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/docs/publish/overview). 
