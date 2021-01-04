@@ -2,7 +2,7 @@
 ![Testspace Action](https://github.com/testspace-com/setup-testspace/workflows/Testspace%20Action/badge.svg)
 
 # Testspace client Setup Action
-A GitHub Action is used to install and configure the Testspace client used for publishing test content to [Testspace.com](https://testspace.com). 
+A GitHub Action is used to install and configure the Testspace client used for publishing test results and reports to [Testspace.com](https://github.com/marketplace/testspace-com). 
 
 ## Usage
 Setting up the Testspace client:
@@ -14,14 +14,14 @@ with:
   token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
 ```
 
-Once the client is setup for a job [results](https://help.testspace.com/docs/publish/push-data-results#file-content) can be published to the Testspace server:
+Once the client is setup for a job [test results](https://help.testspace.com/docs/publish/push-data-results#file-content) can be published to the Testspace server:
 
 ```
 $ testspace results.xml
 ```
 
 ## Input
-The Testspace client action requires a `domain` and optionally a token for pushing content.
+The Testspace client action requires a `domain` and optionally a token for publishing test results.
 
 * [Testspace domain](https://help.testspace.com/docs/dashboard/admin-signup) is the **organizational** name (*subdomain*) used when creating the account along with *.testspace.com*. The *.testspace.com* string is optional. 
 * [Testspace access token](https://help.testspace.com/docs/dashboard/admin-user#account) is required when using a `private` repo. 
@@ -49,7 +49,7 @@ jobs:
         if: always()
 ```
 
-When using a **Matrix** it is recommended to use a `folder` to store the results specific to each matric entry.
+When using a **Matrix** it is recommended to use a `folder` to store the test results specific to each matric entry.
 
 ```
 name: CI
@@ -68,7 +68,7 @@ jobs:
           testspace [ ${{ matrix.os }} ]results.xml   
 ```
 
-When using the [source directory](https://help.testspace.com/docs/publish/push-data-results#source) to organize your results in corresponding `folders`.
+When using the [source directory](https://help.testspace.com/docs/publish/push-data-results#source) to organize your test results in corresponding `folders`.
 
 ```
 $ testspace results.xml{path/to/test-source}
