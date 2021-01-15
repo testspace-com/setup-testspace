@@ -1,5 +1,5 @@
-name: 'setup-testspace'
-description: 'Action to install and configure the Testspace client'
+name: 'Testspace Setup CLI'
+description: 'Setup Testspace client for publishing CI Test Reports, visualizing Test Schema, usage of Dashboard and Metrics'
 author: 'S2 Technologies, Inc.'
 inputs:
   domain:  
