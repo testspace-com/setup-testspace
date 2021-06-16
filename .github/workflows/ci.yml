@@ -1,4 +1,5 @@
 name: Testspace Action
+on:
   push:
     paths-ignore:
       - '**.md'
