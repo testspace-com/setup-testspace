@@ -1,76 +1,53 @@
 
-![Testspace Action](https://github.com/testspace-com/setup-testspace/workflows/Testspace%20Action/badge.svg)
+![Testspace Action](https://github.com/testspace-com/setup-testspace/workflows/ci.yml/badge.svg?branch=readme)(https://github.com/testspace-com/setup-testspace/actions/workflows/ci.yml) 
+
+
 
 # Testspace client Setup Action
-A GitHub Action is used to install and configure the Testspace client used for publishing test results and reports to [Testspace.com](https://github.com/marketplace/testspace-com). 
+This [GitHub Action](https://github.com/features/actions) is used to install and configure the Testspace client used for publishing test results to [Testspace.com](https://github.com/marketplace/testspace-com). 
+
+- Supports `JUnit` and other results formats such as `NUnit`, `TRX`, etc.
+- Supports `Linux`, `maxOS`, and `Windows`
+
+[LIVE DASHBOARD](https://demo.testspace.com)
 
 ## Usage
-Setting up the Testspace client:
+Publish test results, code coverage, and other artifacts with one command. Seamless integration with your CI. Manage all your test status with a single dashboard providing history, metrics, and other types of insights. 
 
-```yaml
-uses: testspace-com/setup-testspace@v1
-with:
-  domain: ${{ github.repository_owner }}  # Testspace subdomain defaults to GitHub org
-  token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
+ ```yml
+ steps:
+   - uses: testspace-com/setup-testspace@v1
+      with:
+        domain: ${{github.repository_owner}}
+        token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
+   ..
+   - name: Publish Results to Testspace
+     run: testspace testcontent/**/*.xml"
 ```
 
-Once the client is setup for a job [test results](https://help.testspace.com/docs/publish/push-data-results#file-content) can be published to the Testspace server:
-
-```
-$ testspace results.xml
-```
-
-## Input
+#### Input
 The Testspace client action requires a `domain` and optionally a token for publishing test results.
 
 * [Testspace domain](https://help.testspace.com/docs/dashboard/admin-signup) is the **organizational** name (*subdomain*) used when creating the account along with *.testspace.com*. The *.testspace.com* string is optional. 
 * [Testspace access token](https://help.testspace.com/docs/dashboard/admin-user#account) is required when using a `private` repo. 
 
-## Examples
-A few usage examples:
+## Features
+Monitor the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together.
 
-```
-name: CI
-on:
-  push:
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: testspace-com/setup-testspace@v1
-        with:
-          domain: ${{github.repository_owner}}
-      - name: Publish Results to Testspace
-        run: |
-          testspace results.xml
-        if: always()
-```
+- Supports a `branch-based` workflow, and `pull requests`
+- Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and and even **multiple workflows**
+- Can also publish code coverage, and other artifacts (see [here](https://help.testspace.com/docs/publish/push-data-results#file-content) for details)
 
-When using a **Matrix** it is recommended to use a `folder` to store the test results specific to each matric entry.
+#### Example
+The repo - https://github.com/testspace-com/setup-testspace/hello.publish - demonstrating support for jobs, matrix, and executing multiple workflows based on the same commit. All of the published results are aggregated together as a single result set.
 
-```
-name: CI
-on:
-  push:
-jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-    steps:
-      ..
-      - name: Publish Results to Testspace
-        run: |
-          testspace [ ${{ matrix.os }} ]results.xml   
-```
+[![Matrix](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml/badge.svg?branch=multiple-workflows)](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml) [![Jobs ](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml/badge.svg?branch=multiple-workflows)](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml) [![Yet Another ](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml/badge.svg?branch=multiple-workflows)](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml)
 
-When using the [source directory](https://help.testspace.com/docs/publish/push-data-results#source) to organize your test results in corresponding `folders`.
 
-```
-$ testspace results.xml{path/to/test-source}
-```
+Results are [here](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/multiple-workflows). 
+
+
+![Results](./docs/images/publish.hello.png "Results")
 
 For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/docs/publish/overview). 
 
@@ -80,5 +57,4 @@ Contributions are encouraged following the [Contribution Guide](CONTRIBUTING.md)
 
 ## License
 This code is released under the [MIT License](LICENSE). 
-
 
