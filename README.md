@@ -1,5 +1,5 @@
 
-[![Testspace Action](https://github.com/testspace-com/setup-testspace/workflows/ci.yml/badge.svg?branch=readme)](https://github.com/testspace-com/setup-testspace/actions/workflows/ci.yml) 
+[![Testspace Action](https://github.com/testspace-com/setup-testspace/actions/workflows/ci.yml/badge.svg?branch=readme)](https://github.com/testspace-com/setup-testspace/actions/workflows/ci.yml) 
 
 
 # Testspace client Setup Action
