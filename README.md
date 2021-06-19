@@ -1,5 +1,5 @@
 
-[![Testspace Action](https://github.com/testspace-com/setup-testspace/actions/workflows/ci.yml/badge.svg?branch=readme)](https://github.com/testspace-com/setup-testspace/actions/workflows/ci.yml) 
+[![Testspace Action](https://github.com/testspace-com/setup-testspace/actions/workflows/ci.yml/badge.svg)](https://github.com/testspace-com/setup-testspace/actions/workflows/ci.yml) 
 
 
 # Testspace client Setup Action
@@ -40,7 +40,7 @@ Monitor the status of the software, regardless of the testing method. All the me
 #### Example
 The repo - https://github.com/testspace-com/hello.publish - demonstrating support for jobs, matrix, and executing multiple workflows based on the same commit. All of the published results are aggregated together as a single result set.
 
-[![Matrix](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml/badge.svg?branch=multiple-workflows)](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml) [![Jobs ](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml/badge.svg?branch=multiple-workflows)](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml) [![Yet Another ](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml/badge.svg?branch=multiple-workflows)](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml)
+[![Matrix](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml) [![Jobs ](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml) [![Yet Another ](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml)
 
 
 Results are [here](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/multiple-workflows). 
