@@ -3,7 +3,7 @@
 
 
 # Testspace client Setup Action
-This [GitHub Action](https://github.com/features/actions) is used to install and configure the Testspace client used for publishing test results to [Testspace.com](https://github.com/marketplace/testspace-com). 
+This [GitHub Action](https://github.com/features/actions) is used to install and configure the Testspace client for publishing test results to [Testspace.com](https://github.com/marketplace/testspace-com). 
 
 - Supports `JUnit` and other results formats such as `NUnit`, `TRX`, etc.
 - Supports `Linux`, `maxOS`, and `Windows`
@@ -34,7 +34,7 @@ The Testspace client action requires a `domain` and optionally a token for publi
 Monitor the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together.
 
 - Supports a `branch-based` workflow, and `pull requests`
-- Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and and even **multiple workflows**
+- Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and even **multiple workflows**
 - Can also publish code coverage, and other artifacts (see [here](https://help.testspace.com/docs/publish/push-data-results#file-content) for details)
 
 #### Example
