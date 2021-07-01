@@ -21,34 +21,38 @@ Publish test results, code coverage, and other artifacts with one command. Seaml
         token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
    ..
    - name: Publish Results to Testspace
-     run: testspace testcontent/**/*.xml"
+     run: testspace path/to/*.xml
 ```
 
-#### Input
+#### Setup 
 The Testspace client action requires a `domain` and optionally a token for publishing test results.
 
 * [Testspace domain](https://help.testspace.com/docs/dashboard/admin-signup) is the **organizational** name (*subdomain*) used when creating the account along with *.testspace.com*. The *.testspace.com* string is optional. 
 * [Testspace access token](https://help.testspace.com/docs/dashboard/admin-user#account) is required when using a `private` repo. 
 
-## Features
-Monitor the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together.
+#### Push
+Simple to publish test results, code coverage, custom metrics, etc., all with a single line command using the Testspace client. 
 
-- Supports a `branch-based` workflow, and `pull requests`
-- Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and even **multiple workflows**
+- Automatically supports a `branch-based` process, forks, and `pull requests`
 - Can also publish code coverage, and other artifacts (see [here](https://help.testspace.com/publish/push-data-results#file-content) for details)
+- Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and even **multiple workflows**
 
-#### Example
-The repo - https://github.com/testspace-com/hello.publish - demonstrating support for jobs, matrix, and executing multiple workflows based on the same commit. All of the published results are aggregated together as a single result set.
+This sample repo - https://github.com/testspace-com/hello.publish - demonstrates support for jobs, matrix, and multiple workflows all executing based on the same commit. All of the published results are aggregated together as a single result set.
 
-[![Matrix](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml) [![Jobs ](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml) [![Yet Another ](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml)
+[CLICK HERE](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/main) to review the *test results* from the `Hello Publish` sample. 
 
+## Testspace Dashboard
+[Testpace.com](https://testspace.com) enables monitoring the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together. Testspace Dashboard provides:
 
-Results are [here](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/multiple-workflows). 
-
-
-![Results](./docs/images/publish.hello.png "Results")
+* Built-in [metrics/graphs](https://help.testspace.com/dashboard/space-metrics)
+* Extensive [Failure Tracking Management](https://help.testspace.com/dashboard/space-results#test-failures)
+* Automatic [Flaky analysis](https://help.testspace.com/dashboard/space-results#filtering)
+* [Insights](https://help.testspace.com/dashboard/project-insights) for process improvements
 
 For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/publish/overview). 
+
+![Dashboard](./docs/images/publish.dashboard.png "Dashboard")
+
 
 ## Contributing 
 Contributions are encouraged following the [Contribution Guide](CONTRIBUTING.md).
