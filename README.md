@@ -35,7 +35,7 @@ Monitor the status of the software, regardless of the testing method. All the me
 
 - Supports a `branch-based` workflow, and `pull requests`
 - Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and even **multiple workflows**
-- Can also publish code coverage, and other artifacts (see [here](https://help.testspace.com/docs/publish/push-data-results#file-content) for details)
+- Can also publish code coverage, and other artifacts (see [here](https://help.testspace.com/publish/push-data-results#file-content) for details)
 
 #### Example
 The repo - https://github.com/testspace-com/hello.publish - demonstrating support for jobs, matrix, and executing multiple workflows based on the same commit. All of the published results are aggregated together as a single result set.
@@ -48,7 +48,7 @@ Results are [here](http://testspace-com.testspace.com/projects/testspace-com:hel
 
 ![Results](./docs/images/publish.hello.png "Results")
 
-For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/docs/publish/overview). 
+For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/publish/overview). 
 
 ## Contributing 
 Contributions are encouraged following the [Contribution Guide](CONTRIBUTING.md).
