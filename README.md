@@ -39,7 +39,7 @@ Simple to publish test results, code coverage, custom metrics, etc., all with a 
 
 This sample repo - https://github.com/testspace-com/hello.publish - demonstrates support for jobs, matrix, and multiple workflows all executing based on the same commit. All of the published results are aggregated together as a single result set.
 
-[CLICK HERE](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/main) to review *test results* from the `Hello Publish` sample. 
+[CLICK HERE](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/main) to review the *test results* from the `Hello Publish` sample. 
 
 ### Dashboard
 Monitor the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together. Testspace Dashboard provides:
