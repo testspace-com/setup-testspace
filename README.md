@@ -41,8 +41,6 @@ This sample repo - https://github.com/testspace-com/hello.publish - demonstrates
 
 [CLICK HERE](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/main) to review *test results* from the `Hello Publish` sample. 
 
-
-
 ### Dashboard
 Monitor the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together. Testspace Dashboard provides:
 
@@ -51,9 +49,10 @@ Monitor the status of the software, regardless of the testing method. All the me
 * Automatic [Flaky analysis](https://help.testspace.com/dashboard/space-results#filtering)
 * [Insights](https://help.testspace.com/dashboard/project-insights) for process improvements
 
+For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/publish/overview). 
+
 ![Dashboard](./docs/images/publish.dashboard.png "Dashboard")
 
-For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/publish/overview). 
 
 ## Contributing 
 Contributions are encouraged following the [Contribution Guide](CONTRIBUTING.md).
