@@ -37,6 +37,14 @@ Monitor the status of the software, regardless of the testing method. All the me
 - Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and even **multiple workflows**
 - Can also publish code coverage, and other artifacts (see [here](https://help.testspace.com/publish/push-data-results#file-content) for details)
 
+### Dashboard
+Testspace Dashboard provides:
+
+* Built-in [metrics/graphs](https://help.testspace.com/dashboard/space-metrics)
+* Extensive [Failure Tracking Management](https://help.testspace.com/dashboard/space-results#test-failures)
+* Automatic [Flaky analysis](https://help.testspace.com/dashboard/space-results#filtering)
+* [Insights](https://help.testspace.com/dashboard/project-insights) for process improvements
+
 #### Example
 The repo - https://github.com/testspace-com/hello.publish - demonstrating support for jobs, matrix, and executing multiple workflows based on the same commit. All of the published results are aggregated together as a single result set.
 
