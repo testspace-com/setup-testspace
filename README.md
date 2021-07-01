@@ -21,17 +21,17 @@ Publish test results, code coverage, and other artifacts with one command. Seaml
         token: ${{ secrets.TESTSPACE_TOKEN }} # optional, only required for private repos
    ..
    - name: Publish Results to Testspace
-     run: testspace testcontent/**/*.xml"
+     run: testspace path/to/*.xml
 ```
 
-#### Input
+#### Setup 
 The Testspace client action requires a `domain` and optionally a token for publishing test results.
 
 * [Testspace domain](https://help.testspace.com/docs/dashboard/admin-signup) is the **organizational** name (*subdomain*) used when creating the account along with *.testspace.com*. The *.testspace.com* string is optional. 
 * [Testspace access token](https://help.testspace.com/docs/dashboard/admin-user#account) is required when using a `private` repo. 
 
-### Publish
-Simple to publish test results, code coverage, custom metrics, etc., all with a single command using the Testspace client. 
+#### Push
+Simple to publish test results, code coverage, custom metrics, etc., all with a single line command using the Testspace client. 
 
 - Automatically supports a `branch-based` process, forks, and `pull requests`
 - Can also publish code coverage, and other artifacts (see [here](https://help.testspace.com/publish/push-data-results#file-content) for details)
@@ -41,8 +41,8 @@ This sample repo - https://github.com/testspace-com/hello.publish - demonstrates
 
 [CLICK HERE](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/main) to review the *test results* from the `Hello Publish` sample. 
 
-### Dashboard
-Monitor the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together. Testspace Dashboard provides:
+## Testspace Dashboard
+[Testpace.com](https://testspace.com) enables monitoring the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together. Testspace Dashboard provides:
 
 * Built-in [metrics/graphs](https://help.testspace.com/dashboard/space-metrics)
 * Extensive [Failure Tracking Management](https://help.testspace.com/dashboard/space-results#test-failures)
