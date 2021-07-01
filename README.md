@@ -30,31 +30,28 @@ The Testspace client action requires a `domain` and optionally a token for publi
 * [Testspace domain](https://help.testspace.com/docs/dashboard/admin-signup) is the **organizational** name (*subdomain*) used when creating the account along with *.testspace.com*. The *.testspace.com* string is optional. 
 * [Testspace access token](https://help.testspace.com/docs/dashboard/admin-user#account) is required when using a `private` repo. 
 
-## Features
-Monitor the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together.
+### Publish
+Simple to publish test results, code coverage, custom metrics, etc., all with a single command using the Testspace client. 
 
-- Supports a `branch-based` workflow, and `pull requests`
-- Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and even **multiple workflows**
+- Automatically supports a `branch-based` process, forks, and `pull requests`
 - Can also publish code coverage, and other artifacts (see [here](https://help.testspace.com/publish/push-data-results#file-content) for details)
+- Aggregates results for [jobs](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs), [matrix](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstrategy), and even **multiple workflows**
+
+This sample repo - https://github.com/testspace-com/hello.publish - demonstrates support for jobs, matrix, and multiple workflows all executing based on the same commit. All of the published results are aggregated together as a single result set.
+
+[CLICK HERE](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/main) to review *test results* from the `Hello Publish` sample. 
+
+
 
 ### Dashboard
-Testspace Dashboard provides:
+Monitor the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together. Testspace Dashboard provides:
 
 * Built-in [metrics/graphs](https://help.testspace.com/dashboard/space-metrics)
 * Extensive [Failure Tracking Management](https://help.testspace.com/dashboard/space-results#test-failures)
 * Automatic [Flaky analysis](https://help.testspace.com/dashboard/space-results#filtering)
 * [Insights](https://help.testspace.com/dashboard/project-insights) for process improvements
 
-#### Example
-The repo - https://github.com/testspace-com/hello.publish - demonstrating support for jobs, matrix, and executing multiple workflows based on the same commit. All of the published results are aggregated together as a single result set.
-
-[![Matrix](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/matrix.yml) [![Jobs ](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/jobs.yml) [![Yet Another ](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml/badge.svg)](https://github.com/testspace-com/hello.publish/actions/workflows/yetanother.yml)
-
-
-Results are [here](http://testspace-com.testspace.com/projects/testspace-com:hello.publish/spaces/multiple-workflows). 
-
-
-![Results](./docs/images/publish.hello.png "Results")
+![Dashboard](./docs/images/publish.dashboard.png "Dashboard")
 
 For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/publish/overview). 
 
