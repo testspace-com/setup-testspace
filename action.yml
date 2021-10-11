@@ -2,7 +2,7 @@ name: 'Testspace Setup CLI'
 description: 'Setup Testspace client to publish CI results from workflow to Dashboard; report flaky tests, metrics, graphs, and analytics'
 author: 'S2 Technologies, Inc.'
 inputs:
-  domain:  
+  domain:
     description: 'Testspace domain name'
     required: true
   token:
@@ -13,26 +13,29 @@ branding:
   icon: terminal
 runs:
   using: 'composite'
-  steps: 
+  steps:
     - run: |
         if [ `uname -m` != 'x86_64' ]; then echo 'Error: Not supported platform.' && exit 1; fi
         case `uname -s` in
           Linux)
             folder=$HOME/bin
             mkdir -p $folder
-            curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $folder
+            curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $RUNNER_TEMP
+            cp -f -p -u $RUNNER_TEMP/testspace $folder
             ;;
           Darwin)
             folder=$HOME/bin
             mkdir -p $folder
-            curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-darwin.tgz | tar -zxvf- -C $folder
+            curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-darwin.tgz | tar -zxvf- -C $RUNNER_TEMP
+            rsync -t -u $RUNNER_TEMP/testspace $folder
             ;;
           *) # Windows
             folder=$LOCALAPPDATA\Programs\testspace
             mkdir -p "$folder"
             curl -OsSL https://testspace-client.s3.amazonaws.com/testspace-windows.zip
-            unzip -q -o testspace-windows.zip -d "$folder"
+            unzip -q -o testspace-windows.zip -d $RUNNER_TEMP
             rm testspace-windows.zip
+            cp -f -p -u $RUNNER_TEMP/testspace.exe "$folder"
             ;;
         esac
         echo "$folder" >> $GITHUB_PATH
