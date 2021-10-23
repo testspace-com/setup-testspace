@@ -45,8 +45,8 @@ This sample repo - https://github.com/testspace-com/hello.publish - demonstrates
 [Testpace.com](https://testspace.com) enables monitoring the status of the software, regardless of the testing method. All the metrics; test results, code coverage, defects, requirements, etc., are collected and analyzed together. Testspace Dashboard provides:
 
 * Built-in [metrics/graphs](https://help.testspace.com/dashboard/space-metrics)
-* Extensive [Failure Tracking Management](https://help.testspace.com/dashboard/space-results#test-failures)
-* Automatic [Flaky analysis](https://help.testspace.com/dashboard/space-results#filtering)
+* Extensive [Failure Tracking Management](https://help.testspace.com/dashboard/space-failures)
+* Automatic [Flaky analysis](https://help.testspace.com/dashboard/space-failures#failure-state)
 * [Insights](https://help.testspace.com/dashboard/project-insights) for process improvements
 
 For more information on Publishing test results refer to the help [Overview on publishing](http://help.testspace.com/publish/overview). 
