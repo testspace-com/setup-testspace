@@ -8,6 +8,9 @@ inputs:
   token:
     description: 'Testspace access token (required for private repos only)'
     required: false
+  config-args:
+    description: 'Custom "config" arguments'
+    required: false
 branding:
   color: green
   icon: terminal
@@ -15,26 +18,29 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        if [ `uname -m` != 'x86_64' ]; then echo 'Error: Not supported platform.' && exit 1; fi
+        base_url=https://testspace-client.s3.amazonaws.com
+        if [ "$TESTSPACE_CLIENT_VER" ]; then version="-$TESTSPACE_CLIENT_VER"; fi
         case `uname -s` in
           Linux)
             folder=$HOME/bin
             mkdir -p $folder
-            curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-linux.tgz | tar -zxvf- -C $RUNNER_TEMP
+            arch=`uname -m`
+            if [ "$arch" != "x86_64" ]; then version="-${arch}${version}"; fi
+            curl -fsSL ${base_url}/testspace-linux${version}.tgz | tar -zxvf- -C $RUNNER_TEMP
             cp -f -p -u $RUNNER_TEMP/testspace $folder
             ;;
           Darwin)
             folder=$HOME/bin
             mkdir -p $folder
-            curl -fsSL https://testspace-client.s3.amazonaws.com/testspace-darwin.tgz | tar -zxvf- -C $RUNNER_TEMP
+            curl -fsSL ${base_url}/testspace-darwin${version}.tgz | tar -zxvf- -C $RUNNER_TEMP
             rsync -t -u $RUNNER_TEMP/testspace $folder
             ;;
           *) # Windows
             folder=$LOCALAPPDATA\Programs\testspace
             mkdir -p "$folder"
-            curl -OsSL https://testspace-client.s3.amazonaws.com/testspace-windows.zip
-            unzip -q -o testspace-windows.zip -d $RUNNER_TEMP
-            rm testspace-windows.zip
+            curl -OsSL ${base_url}/testspace-windows${version}.zip
+            unzip -q -o testspace-windows${version}.zip -d $RUNNER_TEMP
+            rm testspace-windows${version}.zip
             cp -f -p -u $RUNNER_TEMP/testspace.exe "$folder"
             ;;
         esac
@@ -48,6 +54,7 @@ runs:
         if [ "$token" ]; then
           echo "::add-mask::${{ inputs.token }}"
           if [ "${token%%:*}" == "$token" ]; then token="${token}:"; fi
+          domain="${token}@${domain}"
         fi
-        testspace config url "${token}@${domain}"
+        testspace config url "${domain}" ${{ inputs.config-args }}
       shell: bash
