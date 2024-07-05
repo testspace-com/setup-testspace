@@ -32,6 +32,8 @@ runs:
           Darwin)
             folder=$HOME/bin
             mkdir -p $folder
+            arch=`uname -m`
+            if [ "$arch" != "x86_64" ]; then version="-${arch}${version}"; fi
             curl -fsSL ${base_url}/testspace-darwin${version}.tgz | tar -zxvf- -C $RUNNER_TEMP
             rsync -t -u $RUNNER_TEMP/testspace $folder
             ;;
