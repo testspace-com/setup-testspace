@@ -48,6 +48,11 @@ runs:
         esac
         echo "$folder" >> $GITHUB_PATH
       shell: bash
+    - if: ${{ github.event_name == 'pull_request' }}
+      run: command -V jq || echo "::warning::$WARNING"
+      shell: bash
+      env:
+        WARNING: 'To be able to properly obtain the originating PR-number, Testspace requires the jq utility to be installed on your OS image (named jq/jq.exe and on the system PATH)'
     - run: |
         testspace --version
         domain=${{ inputs.domain }}
