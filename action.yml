@@ -1,5 +1,5 @@
 name: 'Testspace Setup CLI'
-description: 'Setup Testspace client to publish CI results from workflow to Dashboard; report flaky tests, metrics, graphs, and analytics'
+description: 'Install and configure the Testspace client to publish test results, coverage and static analysis from your workflow'
 author: 'S2 Technologies, Inc.'
 inputs:
   domain:
