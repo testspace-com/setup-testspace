@@ -1,19 +1,17 @@
 name: Testspace Action
 on:
   push:
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
   pull_request:
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
+  # Monthly, so a change in GitHub's runner images shows up here (and the badge stays current).
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-13, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-15-intel, macos-latest, windows-latest]
     steps:
       - uses: actions/checkout@v4
       - name: Testspace client install & config
